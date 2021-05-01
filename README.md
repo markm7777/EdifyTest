@@ -1,1 +1,1 @@
-# EdifyTest
+# OpenTrivia
