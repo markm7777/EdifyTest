@@ -1,8 +1,8 @@
 {
   "files": {
-    "main.css": "/OpenTrivia/static/css/main.ee7a72cb.chunk.css",
-    "main.js": "/OpenTrivia/static/js/main.077bba82.chunk.js",
-    "main.js.map": "/OpenTrivia/static/js/main.077bba82.chunk.js.map",
+    "main.css": "/OpenTrivia/static/css/main.21d5cd8f.chunk.css",
+    "main.js": "/OpenTrivia/static/js/main.858cb21e.chunk.js",
+    "main.js.map": "/OpenTrivia/static/js/main.858cb21e.chunk.js.map",
     "runtime-main.js": "/OpenTrivia/static/js/runtime-main.b47bc998.js",
     "runtime-main.js.map": "/OpenTrivia/static/js/runtime-main.b47bc998.js.map",
     "static/js/2.c66addf1.chunk.js": "/OpenTrivia/static/js/2.c66addf1.chunk.js",
@@ -10,13 +10,13 @@
     "static/js/3.802d29cb.chunk.js": "/OpenTrivia/static/js/3.802d29cb.chunk.js",
     "static/js/3.802d29cb.chunk.js.map": "/OpenTrivia/static/js/3.802d29cb.chunk.js.map",
     "index.html": "/OpenTrivia/index.html",
-    "static/css/main.ee7a72cb.chunk.css.map": "/OpenTrivia/static/css/main.ee7a72cb.chunk.css.map",
+    "static/css/main.21d5cd8f.chunk.css.map": "/OpenTrivia/static/css/main.21d5cd8f.chunk.css.map",
     "static/js/2.c66addf1.chunk.js.LICENSE.txt": "/OpenTrivia/static/js/2.c66addf1.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.b47bc998.js",
     "static/js/2.c66addf1.chunk.js",
-    "static/css/main.ee7a72cb.chunk.css",
-    "static/js/main.077bba82.chunk.js"
+    "static/css/main.21d5cd8f.chunk.css",
+    "static/js/main.858cb21e.chunk.js"
   ]
 }
