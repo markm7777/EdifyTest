@@ -3,6 +3,9 @@ import { debounce, throttle } from 'lodash';
 import image from './thinking.jpg';
 
 const URL = 'https://opentdb.com/';
+const filterDebounceTime = 2000;
+const refreshThrottleTime = 2000;
+
 
 //JSON data from this API has html entities which don't display well
 const fixString = (str) => {
@@ -11,6 +14,7 @@ const fixString = (str) => {
   return newStr;
 }
 
+//The following 2 components included in this file for convenience
 const DetailsViewComp = ({closeDetails, details}) => {
   return (
     <ModalDialogComp close={closeDetails}>
@@ -76,7 +80,7 @@ export const OpenTriviaComp = () => {
     }
     setStatus(message);
 
-  },[])
+  }, [])
 
   const handleCloseModal = () => {
     setShowDetails(false)
@@ -120,10 +124,10 @@ export const OpenTriviaComp = () => {
     })
     setFilteredTrivia(filteredList)
     handleDisplayStatus('Idle');
-  },[fetchedTrivia, handleDisplayStatus])
+  }, [fetchedTrivia, handleDisplayStatus])
  
   const debouncedHandleFilter = useMemo(
-		() => debounce(val => doFilter(val), 2000), [doFilter] 
+		() => debounce(val => doFilter(val), filterDebounceTime), [doFilter] 
 	);
 
   const handleFilter = (e) => {
@@ -139,7 +143,7 @@ export const OpenTriviaComp = () => {
   }, [])
 
   const throttleHandleRefresh = useMemo(
-    () => throttle(() => doRefresh(), 2000), [doRefresh]
+    () => throttle(() => doRefresh(), refreshThrottleTime), [doRefresh]
   );  
   
   const handleRefresh = () => {
@@ -149,8 +153,8 @@ export const OpenTriviaComp = () => {
     setFilter('');
   }
 
+  //Let's get the localstorage stuff when we start up
   useEffect(() => {
-
     let quantityLS = parseInt(localStorage.getItem('quantity'), 10);  
     if (!isNaN(quantityLS)) {
       setQuantity(quantityLS)
@@ -172,7 +176,7 @@ export const OpenTriviaComp = () => {
     causeErrorRef.current = causeErrorLS;
     
     handleDisplayStatus('Loading...')
-  },[handleDisplayStatus])
+  }, [handleDisplayStatus])
 
   const fetchData = useCallback(() => {
     console.log('fetching...')
@@ -196,7 +200,7 @@ export const OpenTriviaComp = () => {
       handleDisplayStatus('ERROR - ' + error.message);
       console.log(error)
     });
-  },[handleDisplayStatus])
+  }, [handleDisplayStatus])
 
   useEffect(() => {
     let id = setTimeout(() => {
@@ -206,21 +210,21 @@ export const OpenTriviaComp = () => {
   }, [triggerRefresh, fetchData ])
   
   return (
-    <div className='mainApp'>
-      <div className='header'><h1>Open Trivia DB</h1> <img id='image' src={image} alt='thinking' width='60' height='60'></img></div>
-      <div className='mainContent'>
-        <div className='controlsContainer'>
-          <div className='quantityContainer'>
+    <div className=' flexColumnContainer mainApp'>
+      <div className='flexRowContainer header'><h1>Open Trivia DB</h1> <img id='image' src={image} alt='thinking' width='60' height='60'></img></div>
+      <div className='flexRowContainer mainContent'>
+        <div className='flexColumnContainer controlsContainer'>
+          <div className='flexRowContainer quantityContainer'>
             <label htmlFor='quantity'>Quantity: </label>
             <input name='quantity' id='quantityInput' onChange={handleQuantity} value={quantity}></input>            
           </div>
-          <div className='delayContainer'>
+          <div className='flexRowContainer delayContainer'>
             <input name='delay' type='checkbox' checked={delay} onChange={handleDelay}></input>
             <label htmlFor='delay'>Delay</label>
             <input name='delayTime' id='delayAmountInput' onChange={handleDelayTime} value={delayTime}></input>            
             <label htmlFor='delayTime'>ms</label>
           </div>  
-          <div className='refreshContainer'>
+          <div className='flexColumnContainer refreshContainer'>
             <button id='refreshButton' onClick={handleRefresh}>Refresh</button>
             <div>
               <input name='causeError' type='checkbox' checked={causeError} onChange={handleCauseError}></input>
@@ -228,22 +232,22 @@ export const OpenTriviaComp = () => {
             </div>
           </div>
         </div>
-        <div className='listContainer'>
+        <div className='flexColumnContainer listContainer'>
           <div className='filterContainer'>
             <label htmlFor='filter'>Filter: </label>
             <input id='filterInput' name='filter' onChange={handleFilter} value={filter}></input>
           </div>
-          <div className='ulContainer'>
+          <div className='flexColumnContainer ulContainer'>
             <ul>
               {filteredTrivia.map((item, index) => <li key={index} onClick={() => handleLiClick(index)}>{item.category}</li>)}
             </ul>
-            <div className='resultsContainer'>
+            <div className='flexRowContainer resultsContainer'>
               <label className='resultsLabel'>{filteredTrivia.length} Result(s)</label>
             </div>
           </div>
         </div>
       </div>
-      <div className='footer'>
+      <div className='flexRowContainer footer'>
         <p className={fetchErrorRef.current ? 'redStatus' : 'whiteStatus'}>Status: {status}</p>  
       </div>
       {showDetails ? <DetailsViewComp closeDetails={handleCloseModal} details={detailsInfo}></DetailsViewComp> : null}
