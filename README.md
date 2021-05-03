@@ -12,10 +12,10 @@ The 'Cause Error on Fetch' checkbox will cause the retrieval to fail and an erro
 
 ### Notes/implementation details:
 
-_ Localstorage is utilized to persist the 'Quantity', 'Delay', and 'Cause Error on Fetch' settings.
-_ A debouncer is used for the filtering field - delaying the filtering action until 2 seconds have passed since the last input character.
-_ A throttle is used for the Refresh button - allowing only one fetch to occur in a 2 second period. 
+- Localstorage is utilized to persist the 'Quantity', 'Delay', and 'Cause Error on Fetch' settings.
+- A debouncer is used for the filtering field - delaying the filtering action until 2 seconds have passed since the last input character.
+- A throttle is used for the Refresh button - allowing only one fetch to occur in a 2 second period. 
 
-_ To run, simply click here:  https://markm7777.github.io/OpenTrivia/ (it's hosted on github via gh-pages)
+- To run, simply click here:  https://markm7777.github.io/OpenTrivia/ (it's hosted on github via gh-pages)
 
  
