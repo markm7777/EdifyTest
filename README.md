@@ -10,7 +10,7 @@ In addition to retrieving the trivia on startup, the 'refresh' button allows you
 The 'Cause Error on Fetch' checkbox will cause the retrieval to fail and an error message will be displayed.
 
 
-###Notes/implementation details:
+### Notes/implementation details:
 
 Localstorage is utilized to persist the 'Quantity', 'Delay', and 'Cause Error on Fetch' settings.
 A debouncer is used for the filtering field - delaying the filtering action until 2 seconds have passed since the last input character.
